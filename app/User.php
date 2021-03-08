@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password','role_id','address',
-        'gender','phone_number','department','image','education','descriotion'
+        'gender','phone_number','department','image','education','description'
         
 										
     ];
@@ -39,4 +39,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function userAvatar($request){
+        $image = $request->file('image');
+        $name = $image->hashName();
+        $destination = public_path('/images');
+        $image->move($destination,$name);
+        return $name;
+
+    }
+
+
 }
