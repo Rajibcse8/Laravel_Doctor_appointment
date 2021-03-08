@@ -21,6 +21,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::any('/test', function () {
+     return view('admin.doctor.index');
+});
+
 
 
 Auth::routes();
