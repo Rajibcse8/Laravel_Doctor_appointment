@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::any('/test', function () {
-     return view('admin.doctor.index');
+     return view('admin.appointment.create');
 });
 
 
@@ -40,3 +40,12 @@ Route::group(['middleware'=>['auth','admin']],function(){
 	Route::resource('doctor','DoctorController');
 
 });
+
+Route::group(['middleware'=>['auth','doctor']],function(){
+
+Route::resource('appointment','AppointmnetController');
+Route::post('/appointment/check','AppointmnetController@check')->name('appointment.check');
+Route::post('/appointment/update','AppointmnetController@updateTime')->name('update');
+	
+});
+
