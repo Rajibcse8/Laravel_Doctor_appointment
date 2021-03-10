@@ -28,6 +28,9 @@ class HomeController extends Controller
             return redirect('/dashboard');
         }
         
-        return view('home');
+        if(Auth::user()->role->name=="patient"){
+            return redirect('/home');
+        }
+        
     }
 }

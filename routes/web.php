@@ -13,20 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
-Route::any('/test', function () {
-     return view('admin.appointment.create');
-});
+Route::get('/', 'FrontendController@index');
+Route::get('/new-appointment/{doctorId}/{date}','FrontendController@show')->name('create.appointment');
 
 
-
+Route::get('/dashboard', 'DashboardController@index');
 
 
 
