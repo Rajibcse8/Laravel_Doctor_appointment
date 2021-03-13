@@ -35,7 +35,7 @@
             @endif
             
            
-            <form action="{{-- route('booking.appointment') --}}" method="post">@csrf
+            <form action="{{ route('booking.appointment') }}" method="post">@csrf
             <div class="card">
                 <div class="card-header lead">{{$date}}</div>
                 <div class="card-body">

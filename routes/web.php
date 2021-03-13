@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index');
 Route::get('/new-appointment/{doctorId}/{date}','FrontendController@show')->name('create.appointment');
+Route::post('/book/appointment','FrontendController@store')->name('booking.appointment')->middleware('auth');
 
 
 Route::get('/dashboard', 'DashboardController@index');
@@ -27,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::group(['middleware'=>['auth','admin']],function(){
+Route::group(['middleware'=>['auth','admin','doctor'] ],function(){
 	Route::resource('doctor','DoctorController');
 
 });
