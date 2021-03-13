@@ -5,6 +5,7 @@ use App\Appointmnet;
 use App\Time;
 use App\User;
 use App\Booking;
+use App\Mail\AppointmentMail;  
 
 use Illuminate\Http\Request;
 
@@ -88,4 +89,11 @@ class FrontendController extends Controller
             ->whereDate('created_at',date('Y-m-d'))
             ->exists();
     }
+
+    public function myBookings()
+    {
+        $appointments = Booking::latest()->where('user_id',auth()->user()->id)->get();
+        return view('booking.index',compact('appointments'));
+    }
+
 }
