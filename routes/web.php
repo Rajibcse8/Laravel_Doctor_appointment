@@ -58,6 +58,11 @@ Route::group(['middleware'=>['auth','doctor']],function(){
 Route::resource('appointment','AppointmnetController');
 Route::post('/appointment/check','AppointmnetController@check')->name('appointment.check');
 Route::post('/appointment/update','AppointmnetController@updateTime')->name('update');
+Route::post('/prescription','PrescriptionController@store')->name('prescription');
+
+Route::get('/prescription/{userId}/{date}','PrescriptionController@show')->name('prescription.show');
+Route::get('/prescribed-patients','PrescriptionController@patientsFromPrescription')->name('prescribed.patients');
+
 	
 });
 
